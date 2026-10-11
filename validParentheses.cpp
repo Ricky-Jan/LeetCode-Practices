@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <vector>
+#include <stack>
 
 using namespace std;
 
@@ -8,33 +8,35 @@ using namespace std;
 class Solution {
 public:
     bool isValid(string s) {
-        vector<char> stack;
+        if (s.size() % 2 == 1) return false;
+        
+        stack<char> st;
 
         for (char c : s) {
             if (c == '(' || c == '[' || c == '{') {
-                stack.push_back(c);
+                st.push(c);
             } else {
-                if (stack.empty()) {
+                if (st.empty()) {
                     return false;
                 }
 
-                if ((stack.back() == '(' && c == ')') ||
-                    (stack.back() == '[' && c == ']') ||
-                    (stack.back() == '{' && c == '}')) {
-                    stack.pop_back();
+                if ((st.top() == '(' && c == ')') ||
+                    (st.top() == '[' && c == ']') ||
+                    (st.top() == '{' && c == '}')) {
+                    st.pop();
                 } else {
                     return false;
                 }
             }
         }
 
-        return stack.empty();
+        return st.empty();
     }
 };
 
 int main() {
     Solution sol;
-    string str = "([]){})";
+    string str = "([]){}";
 
     bool result = sol.isValid(str);
 
