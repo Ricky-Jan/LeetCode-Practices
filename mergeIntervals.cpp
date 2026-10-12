@@ -27,7 +27,7 @@ public:
 
 int main() {
     Solution sol;
-    vector<vector<int>> intervals = {{2, 6}, {15, 18}, {8, 10}, {1, 3}};
+    vector<vector<int>> intervals = {{1, 6}, {15, 18}, {8, 10}, {1, 3}};
 
     vector<vector<int>> result = sol.merge(intervals);
 
