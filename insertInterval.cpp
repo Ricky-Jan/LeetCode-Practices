@@ -21,6 +21,7 @@ public:
             newInterval[1] = max(newInterval[1], intervals[i][1]);
             i++;
         }
+        
         result.push_back(newInterval);
 
         while (i < n) {
@@ -34,7 +35,7 @@ public:
 
 int main() {
     Solution sol;
-    vector<vector<int>> intervals = {{1, 3}, {6, 9}};
+    vector<vector<int>> intervals = {{1, 3}, {6, 9}, {12, 15}};
     vector<int> newInterval = {2, 5};
 
     vector<vector<int>> result = sol.insert(intervals, newInterval);
